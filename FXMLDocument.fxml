@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="mainPane" maxHeight="600.0" maxWidth="1024.0" minHeight="600.0" minWidth="1024.0" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tongitz.FXMLDocumentController">
+    <children>
+      <Pane fx:id="Mainboard" prefHeight="600.0" prefWidth="1024.0">
+         <children>
+            <Pagination fx:id="Player2Page" layoutX="412.0" layoutY="386.0" prefHeight="200.0" prefWidth="200.0" />
+            <Pagination fx:id="Player1Page" layoutX="14.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" rotate="90.0" />
+            <Pagination fx:id="Player3Page" layoutX="810.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" rotate="-90.0" />
+            <Separator layoutX="114.0" layoutY="200.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="0.0" scaleY="2.0" />
+            <Separator layoutX="907.0" layoutY="200.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="0.0" scaleY="2.0" />
+            <Separator layoutX="412.0" layoutY="499.0" prefWidth="200.0" scaleX="2.0" />
+            <ProgressIndicator fx:id="PreparingIndicator" layoutX="486.0" layoutY="273.0" scaleX="4.0" scaleY="4.0" scaleZ="4.0">
+               <effect>
+                  <ColorAdjust hue="1.0" />
+               </effect>
+            </ProgressIndicator>
+            <Pagination fx:id="DealerPage" layoutX="412.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" rotate="-180.0" />
+         </children>
+      </Pane>
+        <Pane id="PlayerSelectionPane" fx:id="PlayerSelectionPane" maxHeight="600.0" maxWidth="1024.0" minHeight="600.0" minWidth="1024.0" prefHeight="600.0" prefWidth="1024.0" visible="false">
+         <children>
+            <Text id="GameTitle" fx:id="ReflectedGameTitle" fill="WHITE" layoutX="389.0" layoutY="14.0" stroke="#00000080" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="TongItz" textAlignment="CENTER" textOrigin="TOP">
+               <font>
+                  <Font size="80.0" />
+               </font>
+               <effect>
+                  <Reflection>
+                     <input>
+                        <GaussianBlur />
+                     </input>
+                  </Reflection>
+               </effect>
+            </Text>
+            <Text id="GameTitle" fx:id="GameTitle" fill="WHITE" layoutX="389.0" layoutY="14.0" stroke="#00000080" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="TongItz" textAlignment="CENTER" textOrigin="TOP">
+               <font>
+                  <Font size="80.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#000000aa" height="30.0" offsetX="10.0" offsetY="10.0" radius="14.5" width="30.0" />
+               </effect>
+            </Text>
+            <Separator layoutX="11.0" layoutY="123.0" prefHeight="5.0" prefWidth="1002.0" />
+            <ProgressIndicator fx:id="mainProgressLoader" layoutX="497.0" layoutY="138.0" scaleX="1.25" scaleY="1.25" scaleZ="1.25" />
+            <Text id="MainMessage" fx:id="MainMessage" fill="WHITE" layoutX="415.0" layoutY="197.0" stroke="WHITE" text="Waiting for Players..." textAlignment="CENTER" textOrigin="TOP">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Text>
+            <Pane fx:id="player1container" layoutX="11.0" layoutY="240.0" prefHeight="345.0" prefWidth="330.0" style="-fx-background-color: #454545; -fx-border-color: BLUE; -fx-border-radius: 5%; -fx-background-radius: 5%; -fx-border-width: 3;">
+               <children>
+                  <Label fx:id="player1text" layoutX="13.0" layoutY="14.0" text="Player 1" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="player1filelocationtext" layoutX="14.0" layoutY="49.0" text="AI File Location" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField id="Player1FileLocationString" fx:id="Player1FileLocationString" layoutX="13.0" layoutY="74.0" prefHeight="35.0" prefWidth="305.0" promptText="AINAME.tgt" />
+                  <Button id="player1lockinbutton" fx:id="player1lockinbutton" layoutX="13.0" layoutY="115.0" mnemonicParsing="false" onAction="#player1lockInButtonAction" prefHeight="25.0" prefWidth="305.0" text="Lock In">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+                  <Label layoutX="13.0" layoutY="191.0" text="AI Name" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField id="player1namestringfield" fx:id="player1namestringfield" editable="false" layoutX="12.0" layoutY="216.0" prefHeight="35.0" prefWidth="305.0" promptText="Filename is the AI name!" />
+                  <ProgressIndicator id="player1progress" fx:id="player1progress" layoutX="150.0" layoutY="277.0" progress="0.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" visible="false" />
+               </children></Pane>
+            <Pane fx:id="player2container" layoutX="347.0" layoutY="240.0" prefHeight="345.0" prefWidth="330.0" style="-fx-background-color: #454545; -fx-border-color: BLUE; -fx-border-radius: 5%; -fx-background-radius: 5%; -fx-border-width: 3;">
+               <children>
+                  <Label fx:id="player2text" layoutX="13.0" layoutY="14.0" text="Player 2" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="player2filelocationtext" layoutX="14.0" layoutY="49.0" text="AI File Location" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField id="Player2FileLocationString" fx:id="Player2FileLocationString" layoutX="13.0" layoutY="74.0" prefHeight="35.0" prefWidth="305.0" promptText="AINAME.tgt" />
+                  <Button id="player2LockInButton" fx:id="player2lockinbutton" layoutX="13.0" layoutY="115.0" mnemonicParsing="false" onAction="#player2lockInButtonAction" prefHeight="25.0" prefWidth="305.0" text="Lock In">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+                  <Label layoutX="14.0" layoutY="191.0" text="AI Name" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField id="player2namestringfield" fx:id="player2namestringfield" editable="false" layoutX="13.0" layoutY="216.0" prefHeight="35.0" prefWidth="305.0" promptText="Filename is the AI name!" />
+                  <ProgressIndicator fx:id="player2progress" layoutX="150.0" layoutY="278.0" progress="0.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" visible="false" />
+               </children>
+            </Pane>
+            <Pane fx:id="player3container" layoutX="683.0" layoutY="240.0" prefHeight="345.0" prefWidth="330.0" style="-fx-background-color: #454545; -fx-border-color: BLUE; -fx-border-radius: 5%; -fx-background-radius: 5%; -fx-border-width: 3;">
+               <children>
+                  <Label fx:id="player3text" layoutX="13.0" layoutY="14.0" text="Player 3" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="player3filelocationtext" layoutX="14.0" layoutY="49.0" text="AI File Location" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField id="Player3FileLocationString" fx:id="Player3FileLocationString" layoutX="13.0" layoutY="74.0" prefHeight="35.0" prefWidth="305.0" promptText="AINAME.tgt" />
+                  <Button id="player3lockinbutton" fx:id="player3lockinbutton" layoutX="13.0" layoutY="115.0" mnemonicParsing="false" onAction="#player3lockInButtonAction" prefHeight="25.0" prefWidth="305.0" text="Lock In">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </Button>
+                  <Label layoutX="14.0" layoutY="191.0" text="AI Name" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField id="player3namestringfield" fx:id="player3namestringfield" editable="false" layoutX="13.0" layoutY="216.0" prefHeight="35.0" prefWidth="305.0" promptText="Filename is the AI name!" />
+                  <ProgressIndicator fx:id="player3progress" layoutX="151.0" layoutY="278.0" progress="0.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" visible="false" />
+               </children>
+            </Pane>
+         </children>
+        </Pane>
+    </children>
+</AnchorPane>
